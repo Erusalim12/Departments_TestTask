@@ -1,0 +1,80 @@
+﻿@model Domain.Models.Employee
+
+@{
+    ViewBag.Title = "Информация о сотруднике";
+}
+
+    <h4>Информация о сотруднике</h4>
+    <hr />
+
+<div class="col s12 m7">
+    <h2 class="header"> <span class="card-title">@string.Join(" ", Model.Surname, Model.Name, Model.LastName)</span></h2>
+    <div class="card horizontal">
+        <div class="card-image">
+            <img src="~/Content/person.png" />
+        </div>
+        <div class="card-stacked">
+            <div class="card-content">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Surname)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Surname)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.LastName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Birthdate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Birthdate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Phone)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Department)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Department.Name)
+                    </dd>
+
+                </dl>
+            </div>
+            <div class="card-action">
+                <div class="row s12 m5">
+                    <a class="waves-effect waves-light btn" href="@Url.Action("Index","Departments")">  <i class="material-icons left">arrow_back</i>Назад</a>
+                    <a class="waves-effect waves-light btn" href="@Url.Action("Edit","Employees",new {Id=Model.Id})">  <i class="material-icons left">edit</i>Редактировать</a>
+           
+                    <a class="waves-effect waves-light red btn left-align" href="@Url.Action("Delete","Employees",new {Id=Model.Id})">  <i class="material-icons left">delete</i>Удалить</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

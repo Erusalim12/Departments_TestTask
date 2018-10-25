@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Domain.Models.Department>
+@{
+    ViewBag.Title = "Главная";
+}
+<h4>Список отделов</h4>
+<div class="row">
+    <div class="col s12 m8">
+
+
+        <a class="waves-effect waves-light btn" href="@Url.Action("Create","Departments")">  <i class="material-icons left">add</i>Добавить отдел</a>
+        <ul class="collapsible ">
+            @foreach (var department in Model)
+            {
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">filter_drama</i>@department.Name</div>
+                    <div class="collapsible-body">
+                        @Html.Action("_getEmployees", "Departments", new { depId = department.Id })
+                        <a class="waves-effect waves-light btn" href="@Url.Action("Details","Departments",new {Id=department.Id })"><i class="material-icons left">details</i>Информация об отделе</a>
+
+                        <a class="waves-effect waves-light btn" href="@Url.Action("Create","Employees",new {Id=department.Id })"><i class="material-icons left">add</i>Добавить сотрудника</a>
+
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('.collapsible').collapsible();
+        });
+    </script>
+}

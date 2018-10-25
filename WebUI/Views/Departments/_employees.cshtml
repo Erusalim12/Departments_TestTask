@@ -1,0 +1,31 @@
+﻿@model  IEnumerable<Domain.Models.Employee>
+
+<table class="responsive-table striped highlight ">
+    <tr>
+        <th>ФИО</th>
+        <th>Номер телефона</th>
+        <th>Год рождения</th>
+        <th></th>
+    </tr>
+    @foreach (var worker in Model)
+    {
+        <tr>
+            <td>
+                   @string.Join(" ", worker.Surname, worker.Name, worker.LastName)
+            </td>
+            <td>
+                @worker.Phone
+            </td>
+            <td>
+                @worker.Birthdate.ToShortDateString()
+            </td>
+            <td>
+                <a class="waves-effect waves-light btn" href="@Url.Action("Details","Employees",new {Id=worker.Id })"><i class="material-icons left">details</i>Инфо</a>           
+            </td>
+        </tr>
+    }
+</table>
+
+
+
+
