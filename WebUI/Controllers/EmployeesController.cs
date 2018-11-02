@@ -46,10 +46,7 @@ namespace WebUI.Controllers
             }
             return View(empl);
         }
-
-
-
-
+        
         [HttpGet]
         [Route("Employee/Edit")]
         public new ActionResult Edit(Guid Id)
@@ -61,7 +58,6 @@ namespace WebUI.Controllers
                 return View(result);
             }
             return RedirectToAction("Index", "Departments");
-
         }
 
         [HttpPost]
